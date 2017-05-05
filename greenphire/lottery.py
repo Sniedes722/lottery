@@ -44,3 +44,5 @@ class EmployeeTicket(LotteryTicket):
         
     def ticket_info(self):
         return ("{} {}, Numbers: {} Powerball: {}\n".format(self.first, self.last, [pick for pick in self.user_picks], self.powerball))
+        
+    ## Pool Functions
