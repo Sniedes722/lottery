@@ -1,4 +1,4 @@
-# Shawn Niederriter: Greenphire Code Assessment
+# Shawn Niederriter, Code Assessment
 ## Employee Lottery System
 ### Tested Python Version: 3.5.2
 
@@ -11,12 +11,13 @@ python3.5 run.py
 Select an option from the menu screen:
 ```terminal
  __________________________________
-|Greenphire Employee Lottery System|
+|   Employee Lottery System        |
 |__________________________________|
-- 1.Add New Ticket
-- 2.View Tickets
-- 3.Draw Winner
-- 4.Exit
+- 1.Add New Ticket                 |
+- 2.View Tickets                   |
+- 3.Draw Winner                    |
+- 4.Exit                           |
+___________________________________|
 
 Select an Option: 
 ```
