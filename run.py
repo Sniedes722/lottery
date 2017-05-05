@@ -1,4 +1,4 @@
-from greenphire import menu
+from lottery_system import Menu
 
 if __name__ == "__main__":
-    menu()
+    Menu()
