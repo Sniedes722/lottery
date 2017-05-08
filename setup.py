@@ -8,13 +8,13 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='lottery_system',
+    name='lotterysystem',
     version='1.0.0',
 
     description='Coding Challenge for Greenphire',
     long_description=long_description,
 
-    url='https://github.com/Sniedes722/lottery',
+    url='https://github.com/Sniedes722/lottery.git',
 
     author='Shawn Niederriter',
     author_email='shawnhitsback@gmail.com',
