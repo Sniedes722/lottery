@@ -13,7 +13,8 @@ class Menu:
     def __init__(self):
         signal.signal(signal.SIGINT, signal_handler)
         self.ticket = None # initalizes ticket but doesn't call it
-        self.pool = EmployeePool() 
+        self.pool = EmployeePool()
+        self.option_handler()
     
     ## Menu Loop       
     def option_handler(self):
