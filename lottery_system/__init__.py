@@ -12,8 +12,8 @@ class Menu:
     
     def __init__(self):
         signal.signal(signal.SIGINT, signal_handler)
-        self.ticket = None
-        self.pool = EmployeePool()
+        self.ticket = None # initalizes ticket but doesn't call it
+        self.pool = EmployeePool() 
     
     ## Menu Loop       
     def option_handler(self):
@@ -23,19 +23,23 @@ class Menu:
             if self.option == 1:
                 self.ticket = EmployeeTicket()
                 add_ticket_menu()
-                first = str(input("Enter your first name: "))
-                last = str(input("Enter your last name: "))
-                self.ticket.get_name(first, last)
+                self.ticket.get_name()
                 self.ticket.get_picks()
                 self.ticket.get_powerball()
-                self.pool.add_ticket({"first": self.ticket.first, "last": self.ticket.last, "picks": self.ticket.user_picks, "powerball": self.ticket.powerball})
+                self.pool.add_ticket({"first": self.ticket.first, 
+                                      "last": self.ticket.last, 
+                                      "picks": self.ticket.user_picks, 
+                                      "powerball": self.ticket.powerball
+                                      })
                 self.ticket.ticket_info()
             elif self.option == 2:
                 view_tickets_menu()
                 self.pool.show_drawing_pool()
             elif self.option == 3:
                 winner_menu()
-                print(self.pool.pick_winning_numbers())
+                print("Numbers: {}, Powerball: {}".format(self.pool.pick_winning_numbers(),
+                                                self.pool.pick_winning_powerball()
+                                                ))
             elif self.option == 4:
                 print("Exiting Lottery System")
                 sys.exit(0)

@@ -25,9 +25,9 @@ class EmployeeTicket(Lottery):
         self.pick_nums = ["1st","2nd","3rd","4th","5th"]
         
     ## Function that sets employee's first and last name for ticket    
-    def get_name(self, first, last):
-        self.first = first
-        self.last = last
+    def get_name(self):
+        self.first = str(input("Enter your first name: "))
+        self.last = str(input("Enter your last name: "))
         
         return self.first, self.last
         
@@ -71,8 +71,10 @@ class Pool:
     
     def __init__(self):
         self.pool = []
-        self.numbers = []
+        self.numbers = None
+        self.powerballs = None
         self.powerball = None
+        self.winning_numbers = []
     
     ## Adds Ticket to Drawing Pool
     def add_ticket(self, ticket):
@@ -91,13 +93,40 @@ class EmployeePool(Pool):
     
     ## Picks numbers of the winning ticket        
     def pick_winning_numbers(self):
+        self.numbers = []
         for ticket in self.pool:
             for picks in ticket['picks']:
                 self.numbers.append(picks)
         
-        winning_numbers = set(i for i in self.numbers if self.numbers.count(i) > 1) ## pulls numbers with a count over 1
-        #if len(winning_numbers) is not 5:
-        #    winning_numbers.add()
+        duplicate_numbers = set(i for i in self.numbers if self.numbers.count(i) > 1) ## pulls numbers with a count over 1
+        if len(duplicate_numbers) == 5:
+            self.winning_numbers = list(duplicate_numbers) ## if there are exactly 5 duplicated numbers, they are the winners
+        elif len(duplicate_numbers) > 5:
+            self.winning_numbers = list(duplicate_numbers)[:5] ## if there are more than 5 duplicated numbers, pick the 5 most common
+        else:
+            test_card = Lottery() ## if theres less than 5 duplicates, randomly select winners from the empty card
+            test_card.set_empty_ticket() ## set the empty ticket
+            for num in duplicate_numbers:
+                test_card.remove_number(num) ## removes already selected numbers
+            while len(duplicate_numbers) is not 5:
+                duplicate_numbers.add(random.choice(test_card.ticket)) ## adds random, non-selected nums from the card
             
-        #winning_numbers = sorted(winners, key = winners.get, reverse = True)
-        return winning_numbers
+            self.winning_numbers = list(duplicate_numbers)
+        
+        return self.winning_numbers
+    
+    ## Picks powerball number of the winning picket    
+    def pick_winning_powerball(self):
+        self.powerballs = [] ## initalizes empty list of powerballs
+        for ticket in self.pool:
+            self.powerballs.append(ticket['powerball']) ## appends all powerballs
+        
+        duplicate_numbers = set(i for i in self.powerballs if self.powerballs.count(i) > 1) ## finds duplicated powerballs
+        if len(duplicate_numbers) == 1:
+            self.powerball = list(duplicate_numbers)[0] ## if theres only one duplicate
+        elif len(duplicate_numbers) < 1:
+            self.powerball = random.randint(1,26) ## if theres no duplicates, select a random powerball
+        else:
+            self.powerball = random.sample(duplicate_numbers, 1) ## if more than one, randomly select winner
+        
+        return self.powerball
