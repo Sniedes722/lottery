@@ -10,13 +10,10 @@ $ python3.5 run.py
 Or use Package Installer + git:
 ```terminal
 $ python3.5 -m pip install git+https://github.com/Sniedes722/lottery.git
-```
-Then inside a Python3.5 terminal:
-```terminal
+$ python3.5
 >>> from lottery_system import Menu
 >>> Menu()
 ```
-
 
 Select an option from the menu screen:
 ```terminal
