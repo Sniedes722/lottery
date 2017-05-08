@@ -1,6 +1,6 @@
 # Shawn Niederriter, Code Assessment
 ## Employee Lottery System
-### Tested Python Version: 3.5.2
+### Tested Python Versions: 3.5.2+
 
 ### To Run:
 After cloning the repo:
