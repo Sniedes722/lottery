@@ -62,7 +62,7 @@ Select an Option: 2
 Name: Shawn Niederriter, Numbers: [23, 41, 45, 59, 15], Powerball: 23
 Name: Foo Bar, Numbers: [23, 61, 15, 41, 69], Powerball: 22
 ```
-- Option 3 selects a winner.
+- Option 3 selects a winner based on duplicates & randomness.
 ```terminal
 Select an Option: 3
 
