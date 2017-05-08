@@ -5,6 +5,10 @@ import signal
 from .lottery import EmployeeTicket, EmployeePool
 from .menus import *
 
+## Signal handler to kill the lottery program on CTRL+C            
+def signal_handler(signal, frame):
+    print('Exiting Lottery System')
+    return sys.exit(0)
 
 class Menu:
     
@@ -47,9 +51,4 @@ class Menu:
                 return False
             else:
                 print("Not a Valid Option!")
-
-## Signal handler to kill the lottery program on CTRL+C            
-def signal_handler(signal, frame):
-    print('Exiting Lottery System')
-    return sys.exit(0)
     
